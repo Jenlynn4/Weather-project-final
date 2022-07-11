@@ -1,0 +1,52 @@
+.wrapper {
+  max-width: 600px;
+  border: 1px solid;
+  color: rgb(135, 135, 135);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+  padding: 10px;
+}
+
+h1 {
+  padding: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+#humidity {
+  float: right;
+  margin-top: -230px;
+  padding: 10px;
+}
+
+#wind {
+  float: right;
+  margin-top: -200px;
+}
+
+.temperature {
+  font-size: 15px;
+}
+
+#temp {
+  font-size: 40px;
+}
+
+#search {
+  width: 150px;
+  border-radius: 10px;
+  opacity: 0.6;
+}
+
+#submit {
+  width: 80px;
+  border-radius: 10px;
+  opacity: 0.6;
+}
+
+#icon {
+  float: right;
+  margin-right: 150px;
+}
