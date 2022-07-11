@@ -78,7 +78,7 @@ function showTemperature(response) {
   humidityElement.innerHTML = `Humidity: ${humidityPercent}%`;
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = `${temperature}° C | F`;
+  temperatureElement.innerHTML = `${temperature}`;
   let windPercent = Math.round(response.data.wind.speed);
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = `Wind: ${windPercent} mph`;
@@ -86,11 +86,13 @@ function showTemperature(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
   let dayElement = document.querySelector("#dates");
   dayElement.innerHTML = time(response.data.dt * 1000);
+  celsiusTemp = response.data.main.temp;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    `hhtp://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
   getForecast(response.data.coord);
 }
 
@@ -106,7 +108,29 @@ function handleSubmit(event) {
   search(cityPlace.value);
 }
 
-search("New York");
+function showDegreeTemperature(event) {
+  event.preventDefault();
+  let temperartureElement = document.querySelector("#temp");
+  let fahrenheitTemp = Math.round((celsiusTemp * 9) / 5 + 32);
+
+  temperartureElement.innerHTML = fahrenheitTemp;
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let temperartureElement = document.querySelector("#temp");
+  temperartureElement.innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusTemp = null;
 
 let form = document.querySelector("#which-city");
 form.addEventListener("submit", handleSubmit);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemp);
+
+let degreeLink = document.querySelector("#degree-link");
+degreeLink.addEventListener("click", showDegreeTemperature);
+
+search("New York");

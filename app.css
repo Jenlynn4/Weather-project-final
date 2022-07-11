@@ -50,3 +50,7 @@ li {
   float: right;
   margin-right: 150px;
 }
+
+.units .active {
+  color: rgb(135, 135, 135);
+}
